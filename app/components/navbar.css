@@ -1,0 +1,238 @@
+/* .navbar {
+  width: 100%;
+  /* background: linear-gradient(90deg, #f9f9f9 0%, #e3f0ff 100%);  */
+ 
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s; */
+
+
+.navbar {
+  position: fixed; /* stays on top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  /* background: rgba(255, 255, 255, 0.85);   */
+  backdrop-filter: blur(10px); /* adds glass effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+   transition: background 0.6s ease;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  
+  
+}
+
+.navbar-item {
+  position: relative;
+  transition: background 0.2s;
+  border-radius: 0.5rem;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #f0eaea;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  position: relative;
+  transition: color 0.3s, background 0.3s;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #034897; 
+  transition: width 0.3s;
+}
+.navbar:hover  {
+  background: rgba(255, 255, 255, 0.95); /* light white overlay */
+  transition: background 0.6s ease;
+  
+  
+}
+
+.navbar:hover .navbar-link {
+  color:#222; /* light white overlay */
+  transition: background 0.6s ease;
+  
+}
+
+.navbar-link:hover,
+.navbar-item:hover > .navbar-link {
+  color: #013877;
+  /* background: #e3f0ff; */
+}
+
+
+.navbar-link:hover::after,
+.navbar-item:hover > .navbar-link::after {
+  width: 100%;
+}
+
+.has-dropdown .navbar-link::after {
+  content: ' ▼';
+  font-size: 0.7em;
+  position: static;
+  margin-left: 0.25rem;
+  vertical-align: middle;
+  transition: transform 0.3s;
+}
+
+.has-dropdown .navbar-link:hover::after {
+  transform: translateY(2px) rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 2.75rem;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-radius: 0.5rem;
+  min-width: 200px;
+  z-index: 100;
+  padding: 0.5rem 0;
+  animation: fadeIn 0.2s;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+}
+
+.navbar-item:hover > .dropdown-menu,
+.navbar-item:focus-within > .dropdown-menu {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.dropdown-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: #222;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+}
+
+.dropdown-link:hover {
+  background: #e3f0ff;
+  color: #0070f3;
+}
+
+/* Hamburger menu for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  z-index: 1100;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: #034897;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .navbar-menu {
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1rem 0.5rem;
+    border-radius: 0 0 1rem 1rem;
+    z-index: 1000;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+
+  .navbar-item {
+    width: 100%;
+    margin: 0.2rem 0;
+  }
+
+  .navbar-link {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .dropdown-menu {
+    position: static;
+    min-width: 100%;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    display: none;
+  }
+
+  .navbar-item.open > .dropdown-menu {
+    display: flex;
+  }
+
+  .dropdown-link {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+/* 
+/* Import a Google Font for stylish logo */
+/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */ 
+
+.logo {
+  font-family: 'Pacifico', cursive; /* stylish font */
+  font-size: 2rem; /* bigger size */
+  color: #034897;
+}
